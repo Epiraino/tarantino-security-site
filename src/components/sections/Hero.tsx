@@ -1,0 +1,56 @@
+import { Phone, ArrowRight } from "lucide-react";
+import { Link } from "react-router-dom";
+import { Button } from "@/components/ui/button";
+
+const Hero = () => {
+  return (
+    <section className="relative overflow-hidden hero-gradient text-primary-foreground">
+      {/* Subtle pattern overlay */}
+      <div className="absolute inset-0 opacity-10">
+        <div className="absolute inset-0 bg-grid-pattern" />
+      </div>
+
+      <div className="container relative py-20 md:py-28 lg:py-36">
+        <div className="mx-auto max-w-3xl text-center">
+          <h1 className="animate-fade-in text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl lg:text-6xl">
+            Professional Security Services in San Diego
+          </h1>
+          <p className="mx-auto mt-6 max-w-2xl animate-slide-up text-lg text-primary-foreground/80 md:text-xl">
+            Reliable coverage, professional presence, and expert de-escalation.
+            Trusted by property managers, HOAs, and commercial clients
+            throughout the region.
+          </p>
+          <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
+            <Button
+              asChild
+              size="lg"
+              variant="secondary"
+              className="w-full gap-2 sm:w-auto"
+            >
+              <a href="tel:+19513132638">
+                <Phone className="h-5 w-5" />
+                Call Now
+              </a>
+            </Button>
+            <Button
+              asChild
+              size="lg"
+              variant="outline"
+              className="w-full gap-2 border-primary-foreground/30 bg-transparent text-primary-foreground hover:bg-primary-foreground/10 hover:text-primary-foreground sm:w-auto"
+            >
+              <Link to="/services">
+                View Services
+                <ArrowRight className="h-4 w-4" />
+              </Link>
+            </Button>
+          </div>
+        </div>
+      </div>
+
+      {/* Bottom fade */}
+      <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-background to-transparent" />
+    </section>
+  );
+};
+
+export default Hero;
