@@ -11,7 +11,7 @@ const FinalCTA = () => {
 
       <div className="container relative py-16 md:py-24">
         <div className="mx-auto max-w-2xl text-center">
-          <h2 className="text-2xl font-bold tracking-tight sm:text-3xl md:text-4xl">
+          <h2 className="text-2xl font-bold tracking-tight text-amber-400 sm:text-3xl md:text-4xl">
             Ready to Secure Your Property?
           </h2>
           <p className="mx-auto mt-4 max-w-lg text-primary-foreground/80">

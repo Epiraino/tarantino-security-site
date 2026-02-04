@@ -13,7 +13,7 @@ const Hero = () => {
 
       <div className="container relative py-20 md:py-28 lg:py-36">
         <div className="mx-auto max-w-3xl text-center">
-          <h1 className="animate-fade-in text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl lg:text-6xl">
+          <h1 className="animate-fade-in text-3xl font-bold tracking-tight text-amber-400 sm:text-4xl md:text-5xl lg:text-6xl">
             Professional Security Services in San Diego
           </h1>
           <p className="mx-auto mt-6 max-w-2xl animate-slide-up text-lg text-primary-foreground/80 md:text-xl">

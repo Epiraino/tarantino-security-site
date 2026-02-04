@@ -86,7 +86,7 @@ const Services = () => {
       <section className="hero-gradient text-primary-foreground">
         <div className="container py-16 md:py-24">
           <div className="mx-auto max-w-3xl text-center">
-            <h1 className="text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl">
+            <h1 className="text-3xl font-bold tracking-tight text-amber-400 sm:text-4xl md:text-5xl">
               Security Services
             </h1>
             <p className="mt-4 text-lg text-primary-foreground/80">
