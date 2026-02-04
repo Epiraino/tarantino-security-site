@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { Phone, MapPin } from "lucide-react";
 import Logo from "@/components/Logo";
+import { COMPANY } from "@/lib/constants";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -23,7 +24,7 @@ const Footer = () => {
             <h4 className="mb-4 text-sm font-semibold text-foreground">
               Quick Links
             </h4>
-            <nav className="flex flex-col gap-2">
+            <nav className="flex flex-col gap-2" aria-label="Footer navigation">
               <Link
                 to="/"
                 className="text-sm text-muted-foreground transition-colors hover:text-primary"
@@ -56,23 +57,23 @@ const Footer = () => {
             <h4 className="mb-4 text-sm font-semibold text-foreground">
               Contact
             </h4>
-            <div className="flex flex-col gap-3">
+            <address className="flex flex-col gap-3 not-italic">
               <a
-                href="tel:+19513132638"
+                href={COMPANY.phone.href}
                 className="flex items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-primary"
               >
-                <Phone className="h-4 w-4" />
-                951-313-2638
+                <Phone className="h-4 w-4" aria-hidden="true" />
+                {COMPANY.phone.display}
               </a>
               <div className="flex items-start gap-2 text-sm text-muted-foreground">
-                <MapPin className="mt-0.5 h-4 w-4 shrink-0" />
+                <MapPin className="mt-0.5 h-4 w-4 shrink-0" aria-hidden="true" />
                 <span>
-                  2428 Monroe Ave
+                  {COMPANY.address.street}
                   <br />
-                  San Diego, CA 92116
+                  {COMPANY.address.city}, {COMPANY.address.state} {COMPANY.address.zip}
                 </span>
               </div>
-            </div>
+            </address>
           </div>
         </div>
 
@@ -80,7 +81,7 @@ const Footer = () => {
         <div className="mt-12 border-t border-border pt-8">
           <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
             <p className="text-xs text-muted-foreground">
-              © {currentYear} Tarantino Security. All rights reserved.
+              &copy; {currentYear} {COMPANY.name}. All rights reserved.
             </p>
             <p className="text-xs text-muted-foreground">
               Services subject to availability. Licensing and insurance details

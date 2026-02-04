@@ -1,12 +1,13 @@
 import { Phone, ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
+import { COMPANY } from "@/lib/constants";
 
 const Hero = () => {
   return (
     <section className="relative overflow-hidden hero-gradient text-primary-foreground">
       {/* Subtle pattern overlay */}
-      <div className="absolute inset-0 opacity-10">
+      <div className="absolute inset-0 opacity-10" aria-hidden="true">
         <div className="absolute inset-0 bg-grid-pattern" />
       </div>
 
@@ -27,8 +28,8 @@ const Hero = () => {
               variant="secondary"
               className="w-full gap-2 sm:w-auto"
             >
-              <a href="tel:+19513132638">
-                <Phone className="h-5 w-5" />
+              <a href={COMPANY.phone.href}>
+                <Phone className="h-5 w-5" aria-hidden="true" />
                 Call Now
               </a>
             </Button>
@@ -40,7 +41,7 @@ const Hero = () => {
             >
               <Link to="/services">
                 View Services
-                <ArrowRight className="h-4 w-4" />
+                <ArrowRight className="h-4 w-4" aria-hidden="true" />
               </Link>
             </Button>
           </div>
@@ -48,7 +49,7 @@ const Hero = () => {
       </div>
 
       {/* Bottom fade */}
-      <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-background to-transparent" />
+      <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-background to-transparent" aria-hidden="true" />
     </section>
   );
 };

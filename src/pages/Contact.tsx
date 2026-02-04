@@ -1,28 +1,64 @@
-import { useState } from "react";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { z } from "zod";
 import Layout from "@/components/Layout";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
-import { Phone, MapPin, Clock, Send } from "lucide-react";
+import { Phone, MapPin, Clock, Send, Loader2 } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import { COMPANY } from "@/lib/constants";
+
+// Form validation schema
+const contactSchema = z.object({
+  name: z
+    .string()
+    .min(2, "Name must be at least 2 characters")
+    .max(100, "Name must be less than 100 characters"),
+  phone: z
+    .string()
+    .min(10, "Please enter a valid phone number")
+    .regex(
+      /^[\d\s\-()+ ]+$/,
+      "Phone number can only contain digits, spaces, and dashes"
+    ),
+  email: z
+    .string()
+    .min(1, "Email is required")
+    .email("Please enter a valid email address"),
+  message: z
+    .string()
+    .min(10, "Message must be at least 10 characters")
+    .max(2000, "Message must be less than 2000 characters"),
+});
+
+type ContactFormData = z.infer<typeof contactSchema>;
 
 const Contact = () => {
   const { toast } = useToast();
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [formData, setFormData] = useState({
-    name: "",
-    phone: "",
-    email: "",
-    message: "",
+
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors, isSubmitting },
+  } = useForm<ContactFormData>({
+    resolver: zodResolver(contactSchema),
+    defaultValues: {
+      name: "",
+      phone: "",
+      email: "",
+      message: "",
+    },
   });
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-
+  const onSubmit = async (data: ContactFormData) => {
     // Simulate form submission
     await new Promise((resolve) => setTimeout(resolve, 1000));
+
+    // In production, you would send the data to your API here
+    console.log("Form submitted:", data);
 
     toast({
       title: "Message Sent",
@@ -30,17 +66,7 @@ const Contact = () => {
         "Thank you for reaching out. We'll respond as soon as possible.",
     });
 
-    setFormData({ name: "", phone: "", email: "", message: "" });
-    setIsSubmitting(false);
-  };
-
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
-    setFormData((prev) => ({
-      ...prev,
-      [e.target.name]: e.target.value,
-    }));
+    reset();
   };
 
   return (
@@ -76,9 +102,9 @@ const Contact = () => {
 
                 <div className="mt-8">
                   <Button asChild size="lg" className="w-full gap-2 text-lg">
-                    <a href="tel:+19513132638">
-                      <Phone className="h-5 w-5" />
-                      951-313-2638
+                    <a href={COMPANY.phone.href}>
+                      <Phone className="h-5 w-5" aria-hidden="true" />
+                      {COMPANY.phone.display}
                     </a>
                   </Button>
                 </div>
@@ -86,21 +112,22 @@ const Contact = () => {
                 <div className="mt-8 space-y-4">
                   <div className="flex items-start gap-4">
                     <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-primary/10">
-                      <MapPin className="h-5 w-5 text-primary" />
+                      <MapPin className="h-5 w-5 text-primary" aria-hidden="true" />
                     </div>
                     <div>
                       <h3 className="font-semibold text-foreground">Address</h3>
-                      <p className="mt-1 text-sm text-muted-foreground">
-                        2428 Monroe Ave
+                      <address className="mt-1 text-sm text-muted-foreground not-italic">
+                        {COMPANY.address.street}
                         <br />
-                        San Diego, CA 92116
-                      </p>
+                        {COMPANY.address.city}, {COMPANY.address.state}{" "}
+                        {COMPANY.address.zip}
+                      </address>
                     </div>
                   </div>
 
                   <div className="flex items-start gap-4">
                     <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-primary/10">
-                      <Clock className="h-5 w-5 text-primary" />
+                      <Clock className="h-5 w-5 text-primary" aria-hidden="true" />
                     </div>
                     <div>
                       <h3 className="font-semibold text-foreground">
@@ -126,17 +153,31 @@ const Contact = () => {
                   you.
                 </p>
 
-                <form onSubmit={handleSubmit} className="mt-6 space-y-6">
+                <form
+                  onSubmit={handleSubmit(onSubmit)}
+                  className="mt-6 space-y-6"
+                  aria-busy={isSubmitting}
+                  noValidate
+                >
                   <div className="space-y-2">
                     <Label htmlFor="name">Name</Label>
                     <Input
                       id="name"
-                      name="name"
-                      value={formData.name}
-                      onChange={handleChange}
+                      {...register("name")}
                       placeholder="Your name"
-                      required
+                      aria-invalid={errors.name ? "true" : "false"}
+                      aria-describedby={errors.name ? "name-error" : undefined}
+                      className={errors.name ? "border-destructive" : ""}
                     />
+                    {errors.name && (
+                      <p
+                        id="name-error"
+                        className="text-sm text-destructive"
+                        role="alert"
+                      >
+                        {errors.name.message}
+                      </p>
+                    )}
                   </div>
 
                   <div className="grid gap-4 sm:grid-cols-2">
@@ -144,25 +185,47 @@ const Contact = () => {
                       <Label htmlFor="phone">Phone</Label>
                       <Input
                         id="phone"
-                        name="phone"
                         type="tel"
-                        value={formData.phone}
-                        onChange={handleChange}
+                        {...register("phone")}
                         placeholder="Your phone number"
-                        required
+                        aria-invalid={errors.phone ? "true" : "false"}
+                        aria-describedby={
+                          errors.phone ? "phone-error" : undefined
+                        }
+                        className={errors.phone ? "border-destructive" : ""}
                       />
+                      {errors.phone && (
+                        <p
+                          id="phone-error"
+                          className="text-sm text-destructive"
+                          role="alert"
+                        >
+                          {errors.phone.message}
+                        </p>
+                      )}
                     </div>
                     <div className="space-y-2">
                       <Label htmlFor="email">Email</Label>
                       <Input
                         id="email"
-                        name="email"
                         type="email"
-                        value={formData.email}
-                        onChange={handleChange}
+                        {...register("email")}
                         placeholder="Your email address"
-                        required
+                        aria-invalid={errors.email ? "true" : "false"}
+                        aria-describedby={
+                          errors.email ? "email-error" : undefined
+                        }
+                        className={errors.email ? "border-destructive" : ""}
                       />
+                      {errors.email && (
+                        <p
+                          id="email-error"
+                          className="text-sm text-destructive"
+                          role="alert"
+                        >
+                          {errors.email.message}
+                        </p>
+                      )}
                     </div>
                   </div>
 
@@ -170,13 +233,24 @@ const Contact = () => {
                     <Label htmlFor="message">Message</Label>
                     <Textarea
                       id="message"
-                      name="message"
-                      value={formData.message}
-                      onChange={handleChange}
+                      {...register("message")}
                       placeholder="Tell us about your security needs..."
                       rows={5}
-                      required
+                      aria-invalid={errors.message ? "true" : "false"}
+                      aria-describedby={
+                        errors.message ? "message-error" : undefined
+                      }
+                      className={errors.message ? "border-destructive" : ""}
                     />
+                    {errors.message && (
+                      <p
+                        id="message-error"
+                        className="text-sm text-destructive"
+                        role="alert"
+                      >
+                        {errors.message.message}
+                      </p>
+                    )}
                   </div>
 
                   <Button
@@ -185,10 +259,16 @@ const Contact = () => {
                     disabled={isSubmitting}
                   >
                     {isSubmitting ? (
-                      "Sending..."
+                      <>
+                        <Loader2
+                          className="h-4 w-4 animate-spin"
+                          aria-hidden="true"
+                        />
+                        <span>Sending...</span>
+                      </>
                     ) : (
                       <>
-                        <Send className="h-4 w-4" />
+                        <Send className="h-4 w-4" aria-hidden="true" />
                         Send Message
                       </>
                     )}
@@ -211,7 +291,11 @@ const Contact = () => {
               Based in San Diego, we provide security services throughout the
               county and neighboring communities.
             </p>
-            <div className="mt-8 aspect-video rounded-xl bg-primary/5 border border-border" />
+            <div
+              className="mt-8 aspect-video rounded-xl bg-primary/5 border border-border"
+              role="img"
+              aria-label="Service area map placeholder - San Diego and surrounding areas"
+            />
           </div>
         </div>
       </section>

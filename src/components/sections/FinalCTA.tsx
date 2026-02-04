@@ -1,10 +1,11 @@
 import { Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { COMPANY } from "@/lib/constants";
 
 const FinalCTA = () => {
   return (
     <section className="relative overflow-hidden hero-gradient text-primary-foreground">
-      <div className="absolute inset-0 opacity-10">
+      <div className="absolute inset-0 opacity-10" aria-hidden="true">
         <div className="absolute inset-0 bg-grid-pattern" />
       </div>
 
@@ -25,9 +26,9 @@ const FinalCTA = () => {
               variant="secondary"
               className="gap-2 text-lg"
             >
-              <a href="tel:+19513132638">
-                <Phone className="h-5 w-5" />
-                951-313-2638
+              <a href={COMPANY.phone.href}>
+                <Phone className="h-5 w-5" aria-hidden="true" />
+                {COMPANY.phone.display}
               </a>
             </Button>
           </div>

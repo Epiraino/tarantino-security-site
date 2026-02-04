@@ -16,7 +16,7 @@ const App = () => (
     <TooltipProvider>
       <Toaster />
       <Sonner />
-      <BrowserRouter>
+      <BrowserRouter basename="/tarantino-security-site">
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/services" element={<Services />} />
