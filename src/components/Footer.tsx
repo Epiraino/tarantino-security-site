@@ -91,8 +91,8 @@ const Footer = () => {
         </div>
       </div>
 
-      {/* Spacer for mobile sticky button */}
-      <div className="h-20 md:hidden" />
+      {/* Spacer for mobile sticky call button */}
+      <div className="pb-[76px] md:pb-0" />
     </footer>
   );
 };

@@ -1,4 +1,5 @@
 import Layout from "@/components/Layout";
+import { useDocumentTitle } from "@/hooks/use-document-title";
 import Hero from "@/components/sections/Hero";
 import TrustBar from "@/components/sections/TrustBar";
 import ServicesPreview from "@/components/sections/ServicesPreview";
@@ -8,6 +9,7 @@ import Testimonials from "@/components/sections/Testimonials";
 import FinalCTA from "@/components/sections/FinalCTA";
 
 const Index = () => {
+  useDocumentTitle();
   return (
     <Layout>
       <Hero />

@@ -1,10 +1,9 @@
 import Layout from "@/components/Layout";
+import { useDocumentTitle } from "@/hooks/use-document-title";
 import FinalCTA from "@/components/sections/FinalCTA";
 import {
   UserCheck,
-  Car,
   KeyRound,
-  CalendarCheck,
   Building2,
   FileText,
   MapPin,
@@ -26,19 +25,6 @@ const services = [
     ],
   },
   {
-    icon: Car,
-    title: "Mobile Patrol",
-    description:
-      "Regular patrol routes covering multiple locations with documented check-ins, providing cost-effective coverage across larger areas.",
-    features: [
-      "Scheduled patrol routes",
-      "Randomized timing options",
-      "GPS-tracked check-ins",
-      "Property inspection reports",
-      "Emergency response capability",
-    ],
-  },
-  {
     icon: KeyRound,
     title: "Access Control",
     description:
@@ -49,19 +35,6 @@ const services = [
       "Visitor logging",
       "Package and delivery handling",
       "Tailgating prevention",
-    ],
-  },
-  {
-    icon: CalendarCheck,
-    title: "Event Security",
-    description:
-      "Professional security staffing for corporate events, private functions, and public gatherings of all sizes.",
-    features: [
-      "Pre-event planning consultation",
-      "Crowd management",
-      "VIP protection services",
-      "Parking lot security",
-      "Emergency coordination",
     ],
   },
   {
@@ -80,18 +53,19 @@ const services = [
 ];
 
 const Services = () => {
+  useDocumentTitle("Security Services");
   return (
     <Layout>
       {/* Hero */}
       <section className="hero-gradient text-primary-foreground">
         <div className="container py-16 md:py-24">
           <div className="mx-auto max-w-3xl text-center">
-            <h1 className="text-3xl font-bold tracking-tight text-amber-400 sm:text-4xl md:text-5xl">
+            <h1 className="text-3xl font-bold tracking-tight text-amber-200 sm:text-4xl md:text-5xl">
               Security Services
             </h1>
             <p className="mt-4 text-lg text-primary-foreground/80">
               Comprehensive security solutions tailored to commercial
-              properties, HOAs, events, and more.
+              properties, HOAs, and more.
             </p>
           </div>
         </div>

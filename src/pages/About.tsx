@@ -1,4 +1,5 @@
 import Layout from "@/components/Layout";
+import { useDocumentTitle } from "@/hooks/use-document-title";
 import FinalCTA from "@/components/sections/FinalCTA";
 import { Shield, Target, Heart, CheckCircle } from "lucide-react";
 
@@ -33,13 +34,14 @@ const standards = [
 ];
 
 const About = () => {
+  useDocumentTitle("About");
   return (
     <Layout>
       {/* Hero */}
       <section className="hero-gradient text-primary-foreground">
         <div className="container py-16 md:py-24">
           <div className="mx-auto max-w-3xl text-center">
-            <h1 className="text-3xl font-bold tracking-tight text-amber-400 sm:text-4xl md:text-5xl">
+            <h1 className="text-3xl font-bold tracking-tight text-amber-200 sm:text-4xl md:text-5xl">
               About Tarantino Security
             </h1>
             <p className="mt-4 text-lg text-primary-foreground/80">

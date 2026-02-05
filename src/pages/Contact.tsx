@@ -8,6 +8,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { Phone, MapPin, Clock, Send, Loader2 } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import { useDocumentTitle } from "@/hooks/use-document-title";
 import { COMPANY } from "@/lib/constants";
 
 // Form validation schema
@@ -36,6 +37,7 @@ const contactSchema = z.object({
 type ContactFormData = z.infer<typeof contactSchema>;
 
 const Contact = () => {
+  useDocumentTitle("Contact Us");
   const { toast } = useToast();
 
   const {
@@ -53,17 +55,16 @@ const Contact = () => {
     },
   });
 
-  const onSubmit = async (data: ContactFormData) => {
-    // Simulate form submission
+  // TODO: Connect to backend API (e.g. SendGrid, Resend, or custom endpoint)
+  // to actually deliver form submissions. Until then the form validates
+  // client-side but does not transmit data.
+  const onSubmit = async (_data: ContactFormData) => {
     await new Promise((resolve) => setTimeout(resolve, 1000));
 
-    // In production, you would send the data to your API here
-    console.log("Form submitted:", data);
-
     toast({
-      title: "Message Sent",
+      title: "Message Received",
       description:
-        "Thank you for reaching out. We'll respond as soon as possible.",
+        "Thank you! We'll follow up shortly. For immediate assistance, please call us directly.",
     });
 
     reset();
@@ -75,7 +76,7 @@ const Contact = () => {
       <section className="hero-gradient text-primary-foreground">
         <div className="container py-16 md:py-24">
           <div className="mx-auto max-w-3xl text-center">
-            <h1 className="text-3xl font-bold tracking-tight text-amber-400 sm:text-4xl md:text-5xl">
+            <h1 className="text-3xl font-bold tracking-tight text-amber-200 sm:text-4xl md:text-5xl">
               Contact Us
             </h1>
             <p className="mt-4 text-lg text-primary-foreground/80">
@@ -293,8 +294,7 @@ const Contact = () => {
             </p>
             <div
               className="mt-8 aspect-video rounded-xl bg-primary/5 border border-border"
-              role="img"
-              aria-label="Service area map placeholder - San Diego and surrounding areas"
+              aria-hidden="true"
             />
           </div>
         </div>

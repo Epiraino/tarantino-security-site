@@ -1,4 +1,7 @@
-import { ClipboardCheck, Users, MessageSquare } from "lucide-react";
+import { Link } from "react-router-dom";
+import { ClipboardCheck, Users, MessageSquare, ArrowRight } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { useInView } from "@/hooks/use-in-view";
 
 const steps = [
   {
@@ -25,9 +28,11 @@ const steps = [
 ];
 
 const HowItWorks = () => {
+  const { ref, isInView } = useInView();
+
   return (
     <section className="section-padding bg-muted/30">
-      <div className="container">
+      <div className="container" ref={ref}>
         <div className="mx-auto max-w-2xl text-center">
           <h2 className="text-2xl font-bold tracking-tight sm:text-3xl md:text-4xl">
             How It Works
@@ -39,10 +44,20 @@ const HowItWorks = () => {
 
         <div className="mt-12 grid gap-8 md:grid-cols-3">
           {steps.map((step, index) => (
-            <div key={step.number} className="relative text-center">
+            <div
+              key={step.number}
+              className={`relative text-center ${
+                isInView ? "animate-slide-up" : "opacity-0"
+              }`}
+              style={{ animationDelay: `${index * 150}ms` }}
+            >
               {/* Connector line */}
               {index < steps.length - 1 && (
-                <div className="absolute left-1/2 top-16 hidden h-0.5 w-full bg-border md:block" />
+                <div
+                  className="absolute top-8 hidden h-0.5 bg-border md:block"
+                  style={{ left: "60%", width: "80%" }}
+                  aria-hidden="true"
+                />
               )}
 
               <div className="relative mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-primary text-primary-foreground">
@@ -59,6 +74,15 @@ const HowItWorks = () => {
               </p>
             </div>
           ))}
+        </div>
+
+        <div className="mt-12 text-center">
+          <Button asChild className="gap-2">
+            <Link to="/contact">
+              Schedule Your Assessment
+              <ArrowRight className="h-4 w-4" />
+            </Link>
+          </Button>
         </div>
       </div>
     </section>

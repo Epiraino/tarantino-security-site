@@ -8,26 +8,14 @@ import { COMPANY } from "@/lib/constants";
 const navLinks = [
   { name: "Home", href: "/" },
   { name: "Services", href: "/services" },
+  { name: "Properties", href: "/properties" },
   { name: "About", href: "/about" },
   { name: "Contact", href: "/contact" },
 ];
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [showStickyButton, setShowStickyButton] = useState(true);
   const location = useLocation();
-
-  // Hide sticky button when near bottom of page to avoid overlapping footer
-  useEffect(() => {
-    const handleScroll = () => {
-      const scrolledToBottom =
-        window.innerHeight + window.scrollY >= document.body.offsetHeight - 200;
-      setShowStickyButton(!scrolledToBottom);
-    };
-
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
 
   // Close mobile menu on route change
   useEffect(() => {
@@ -70,7 +58,7 @@ const Header = () => {
 
         {/* Mobile Menu Button */}
         <button
-          className="md:hidden p-2 -mr-2"
+          className="md:hidden min-h-[44px] min-w-[44px] flex items-center justify-center"
           onClick={() => setIsMenuOpen(!isMenuOpen)}
           aria-label={isMenuOpen ? "Close menu" : "Open menu"}
           aria-expanded={isMenuOpen}
@@ -116,21 +104,6 @@ const Header = () => {
         </div>
       )}
 
-      {/* Mobile Sticky Call Button - hides near footer */}
-      <div
-        className={`fixed bottom-4 left-4 right-4 z-40 md:hidden transition-all duration-300 ${
-          showStickyButton
-            ? "translate-y-0 opacity-100"
-            : "translate-y-16 opacity-0 pointer-events-none"
-        }`}
-      >
-        <Button asChild size="lg" className="w-full shadow-lg">
-          <a href={COMPANY.phone.href} className="gap-2">
-            <Phone className="h-5 w-5" aria-hidden="true" />
-            Call {COMPANY.phone.display}
-          </a>
-        </Button>
-      </div>
     </header>
   );
 };

@@ -1,4 +1,7 @@
-import { Quote } from "lucide-react";
+import { Link } from "react-router-dom";
+import { Quote, ArrowRight } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { useInView } from "@/hooks/use-in-view";
 
 const testimonials = [
   {
@@ -22,9 +25,11 @@ const testimonials = [
 ];
 
 const Testimonials = () => {
+  const { ref, isInView } = useInView();
+
   return (
     <section className="section-padding bg-muted/30">
-      <div className="container">
+      <div className="container" ref={ref}>
         <div className="mx-auto max-w-2xl text-center">
           <h2 className="text-2xl font-bold tracking-tight sm:text-3xl md:text-4xl">
             Client Feedback
@@ -36,24 +41,36 @@ const Testimonials = () => {
 
         <div className="mt-12 grid gap-6 md:grid-cols-3">
           {testimonials.map((testimonial, index) => (
-            <div
-              key={index}
-              className="rounded-xl border border-border bg-card p-6 card-elevated"
+            <figure
+              key={testimonial.author}
+              className={`rounded-xl border border-border bg-card p-6 card-elevated ${
+                isInView ? "animate-slide-up" : "opacity-0"
+              }`}
+              style={{ animationDelay: `${index * 100}ms` }}
             >
-              <Quote className="h-8 w-8 text-primary/30" />
+              <Quote className="h-8 w-8 text-primary/30" aria-hidden="true" />
               <blockquote className="mt-4 text-foreground">
                 "{testimonial.quote}"
               </blockquote>
-              <div className="mt-6 border-t border-border pt-4">
-                <div className="font-semibold text-foreground">
+              <figcaption className="mt-6 border-t border-border pt-4">
+                <cite className="font-semibold text-foreground not-italic">
                   {testimonial.author}
-                </div>
+                </cite>
                 <div className="text-sm text-muted-foreground">
                   {testimonial.role}
                 </div>
-              </div>
-            </div>
+              </figcaption>
+            </figure>
           ))}
+        </div>
+
+        <div className="mt-12 text-center">
+          <Button asChild variant="outline" className="gap-2">
+            <Link to="/contact">
+              Get a Free Quote
+              <ArrowRight className="h-4 w-4" />
+            </Link>
+          </Button>
         </div>
       </div>
     </section>

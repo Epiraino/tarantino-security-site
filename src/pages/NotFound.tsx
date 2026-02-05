@@ -1,21 +1,29 @@
-import { useLocation } from "react-router-dom";
-import { useEffect } from "react";
+import { Link } from "react-router-dom";
+import { Shield } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { useDocumentTitle } from "@/hooks/use-document-title";
 
 const NotFound = () => {
-  const location = useLocation();
-
-  useEffect(() => {
-    console.error("404 Error: User attempted to access non-existent route:", location.pathname);
-  }, [location.pathname]);
-
+  useDocumentTitle("Page Not Found");
   return (
-    <div className="flex min-h-screen items-center justify-center bg-muted">
-      <div className="text-center">
-        <h1 className="mb-4 text-4xl font-bold">404</h1>
-        <p className="mb-4 text-xl text-muted-foreground">Oops! Page not found</p>
-        <a href="/" className="text-primary underline hover:text-primary/90">
-          Return to Home
-        </a>
+    <div className="flex min-h-screen items-center justify-center hero-gradient text-primary-foreground">
+      <div className="text-center px-4">
+        <Shield className="mx-auto h-16 w-16 text-amber-200/60" aria-hidden="true" />
+        <h1 className="mt-6 text-5xl font-bold text-amber-200">404</h1>
+        <p className="mt-4 text-xl text-primary-foreground/80">
+          Page not found
+        </p>
+        <p className="mt-2 text-sm text-primary-foreground/60">
+          The page you're looking for doesn't exist or has been moved.
+        </p>
+        <div className="mt-8 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
+          <Button asChild variant="secondary">
+            <Link to="/">Return to Home</Link>
+          </Button>
+          <Button asChild variant="outline" className="border-primary-foreground/20 text-primary-foreground hover:bg-primary-foreground/10">
+            <Link to="/contact">Contact Us</Link>
+          </Button>
+        </div>
       </div>
     </div>
   );

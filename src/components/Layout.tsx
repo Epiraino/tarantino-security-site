@@ -1,6 +1,7 @@
 import { ReactNode } from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import MobileCallBanner from "@/components/MobileCallBanner";
 
 interface LayoutProps {
   children: ReactNode;
@@ -13,10 +14,11 @@ const Layout = ({ children }: LayoutProps) => {
         Skip to main content
       </a>
       <Header />
-      <main id="main-content" className="flex-1" tabIndex={-1}>
+      <main id="main-content" className="flex-1">
         {children}
       </main>
       <Footer />
+      <MobileCallBanner />
     </div>
   );
 };
