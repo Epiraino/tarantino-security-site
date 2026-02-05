@@ -13,10 +13,13 @@ const Hero = () => {
 
       <div className="container relative py-20 md:py-28 lg:py-36">
         <div className="mx-auto max-w-3xl text-center">
-          <h1 className="animate-fade-in text-3xl font-bold tracking-tight text-amber-200 sm:text-4xl md:text-5xl lg:text-6xl">
-            Professional Security Services in San Diego
+          <h1 className="animate-fade-in text-4xl font-bold tracking-tight text-amber-200 sm:text-5xl md:text-6xl lg:text-7xl">
+            Tarantino Security
           </h1>
-          <p className="mx-auto mt-6 max-w-2xl animate-slide-up text-lg text-primary-foreground/80 md:text-xl">
+          <p className="mt-4 animate-fade-in text-xl font-medium text-primary-foreground/90 sm:text-2xl md:text-3xl">
+            Professional Security Services in San Diego
+          </p>
+          <p className="mx-auto mt-6 max-w-2xl animate-slide-up text-lg text-primary-foreground/70 md:text-xl">
             Reliable coverage, professional presence, and expert de-escalation.
             Trusted by property managers, HOAs, and commercial clients
             throughout the region.
