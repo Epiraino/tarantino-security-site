@@ -6,21 +6,21 @@ import { useInView } from "@/hooks/use-in-view";
 const testimonials = [
   {
     quote:
-      "Tarantino Security has been an excellent partner for our apartment community. Their guards are professional and responsive, and the daily reports keep us informed.",
+      "Tarantino Security integrated seamlessly with our team. Their officers understand Fair Housing, respect resident privacy, and the client portal makes reporting effortless.",
     author: "Property Manager",
-    role: "Multi-Family Residential",
+    role: "Affordable Housing Community",
   },
   {
     quote:
-      "We needed reliable security for our corporate events, and they delivered. Courteous staff who handled everything discreetly and professionally.",
-    author: "Event Coordinator",
-    role: "Corporate Events",
+      "Their trauma-informed approach changed everything for our residents. Officers conduct welfare checks with empathy and have become a trusted presence on site.",
+    author: "Director of Supportive Services",
+    role: "Permanent Supportive Housing",
   },
   {
     quote:
-      "The mobile patrol service gives our HOA peace of mind. Consistent coverage and great communication whenever there's an incident to report.",
-    author: "HOA Board Member",
-    role: "Residential Community",
+      "Flat-rate pricing with no surprise fees, monthly supervisor meetings, and a live dispatch center that actually answers the phone. Exactly what our portfolio needed.",
+    author: "Regional Portfolio Manager",
+    role: "Voucher-Based Community",
   },
 ];
 

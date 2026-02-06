@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { ClipboardCheck, Users, MessageSquare, ArrowRight } from "lucide-react";
+import { ClipboardCheck, FileText, Users, BarChart3, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useInView } from "@/hooks/use-in-view";
 
@@ -7,23 +7,30 @@ const steps = [
   {
     number: "01",
     icon: ClipboardCheck,
-    title: "Site Assessment",
+    title: "In-Person Consultation",
     description:
-      "We evaluate your property's layout, access points, and specific security needs to develop a comprehensive understanding.",
+      "We assess your property layout, access points, lease requirements, and resident demographics to understand your unique environment.",
   },
   {
     number: "02",
-    icon: Users,
-    title: "Staffing Plan",
+    icon: FileText,
+    title: "Custom Protocol Development",
     description:
-      "Based on our assessment, we create a tailored staffing schedule with trained personnel matched to your requirements.",
+      "Post orders, de-escalation protocols, Fair Housing compliance procedures, and case management coordination — tailored to your site.",
   },
   {
     number: "03",
-    icon: MessageSquare,
-    title: "Reporting & Communication",
+    icon: Users,
+    title: "Personnel Matching & Onboarding",
     description:
-      "Receive daily activity reports and maintain open communication with our team throughout our partnership.",
+      "Officers selected by site fit, then trained on house rules, resident privacy, and trauma-informed response before their first shift.",
+  },
+  {
+    number: "04",
+    icon: BarChart3,
+    title: "Ongoing Reporting & Improvement",
+    description:
+      "Daily activity reports via GuardPro, secure client portal access, and monthly supervisor meetings to review performance and goals.",
   },
 ];
 
@@ -42,7 +49,7 @@ const HowItWorks = () => {
           </p>
         </div>
 
-        <div className="mt-12 grid gap-8 md:grid-cols-3">
+        <div className="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
           {steps.map((step, index) => (
             <div
               key={step.number}
@@ -54,7 +61,7 @@ const HowItWorks = () => {
               {/* Connector line */}
               {index < steps.length - 1 && (
                 <div
-                  className="absolute top-8 hidden h-0.5 bg-border md:block"
+                  className="absolute top-8 hidden h-0.5 bg-border lg:block"
                   style={{ left: "60%", width: "80%" }}
                   aria-hidden="true"
                 />
@@ -79,7 +86,7 @@ const HowItWorks = () => {
         <div className="mt-12 text-center">
           <Button asChild className="gap-2">
             <Link to="/contact">
-              Schedule Your Assessment
+              Schedule Your Consultation
               <ArrowRight className="h-4 w-4" />
             </Link>
           </Button>

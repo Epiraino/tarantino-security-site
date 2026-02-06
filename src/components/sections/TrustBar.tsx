@@ -1,26 +1,26 @@
-import { Shield, Clock, UserCheck, FileText } from "lucide-react";
+import { Shield, Headphones, Heart, FileText } from "lucide-react";
 import { useInView } from "@/hooks/use-in-view";
 
 const trustItems = [
   {
     icon: Shield,
-    title: "Licensed & Insured",
-    description: "Fully compliant and covered",
+    title: "CA Licensed & Insured",
+    description: "Private Patrol Operator, fully insured",
   },
   {
-    icon: Clock,
-    title: "24/7 Availability",
-    description: "Round-the-clock coverage",
+    icon: Headphones,
+    title: "24/7 Live Dispatch",
+    description: "Every call answered by a live professional",
   },
   {
-    icon: UserCheck,
-    title: "Professional Presence",
-    description: "Trained and presentable staff",
+    icon: Heart,
+    title: "Trauma-Informed Training",
+    description: "De-escalation and behavioral health awareness",
   },
   {
     icon: FileText,
-    title: "Daily Activity Reports",
-    description: "Detailed incident documentation",
+    title: "GuardPro Digital Reports",
+    description: "Time-stamped logs, photos, and client portal",
   },
 ];
 

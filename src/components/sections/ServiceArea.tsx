@@ -30,7 +30,7 @@ const ServiceArea = () => {
             Service Area
           </h2>
           <p className="mt-4 text-muted-foreground">
-            Proudly serving San Diego and surrounding communities
+            Serving affordable, supportive, and mixed-use housing communities across San Diego County
           </p>
         </div>
 

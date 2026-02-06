@@ -12,4 +12,6 @@ export const COMPANY = {
     full: "2428 Monroe Ave, San Diego, CA 92116",
   },
   name: "Tarantino Security",
+  tagline: "Security for Affordable & Supportive Housing Communities",
+  license: "California Licensed Private Patrol Operator",
 } as const;

@@ -6,49 +6,105 @@ import {
   KeyRound,
   Building2,
   FileText,
-  MapPin,
-  Clock,
+  Radio,
+  DollarSign,
+  CalendarCheck,
+  GraduationCap,
+  Headphones,
+  Phone,
+  Eye,
+  Siren,
 } from "lucide-react";
 
 const services = [
   {
     icon: UserCheck,
-    title: "On-Site Security",
+    title: "On-Site Security Officers",
     description:
-      "Dedicated security personnel stationed at your property to maintain a visible presence, monitor activity, and respond to incidents in real-time.",
+      "Personnel matched to your site by resident demographics, behavioral-health sensitivity, and community needs. Officers conduct welfare checks, assist with lockouts, collaborate with case managers, and wear approachable professional uniforms. If a prior conflict arises, we reassign — no questions asked.",
     features: [
-      "Uniformed, trained officers",
-      "Access point monitoring",
-      "Visitor management",
-      "Incident response and documentation",
-      "Customer service-oriented approach",
+      "Officers matched by site fit, not just availability",
+      "Welfare checks and resident assistance",
+      "Lockout support and case management collaboration",
+      "Professional, approachable uniforms",
+      "Prior-conflict reassignment policy",
     ],
   },
   {
     icon: KeyRound,
-    title: "Access Control",
+    title: "Access Control & Policy Enforcement",
     description:
-      "Manage entry points at your facility, verify credentials, and maintain secure access for authorized personnel and visitors.",
+      "Fair Housing-compliant access control built around lease-based policies and resident privacy. We enforce your community rules consistently and respectfully — never through intimidation or profiling.",
     features: [
-      "Gate and entry management",
-      "Credential verification",
-      "Visitor logging",
-      "Package and delivery handling",
-      "Tailgating prevention",
+      "Fair Housing-compliant procedures",
+      "Lease-based policy enforcement",
+      "Resident privacy protections",
+      "Visitor management and logging",
+      "Consistent, respectful enforcement",
     ],
   },
   {
     icon: Building2,
-    title: "Property Security",
+    title: "Affordable & Supportive Housing Security",
     description:
-      "Specialized coverage for apartment complexes, HOA communities, and residential properties with consistent, reliable presence.",
+      "Specialized security for LIHTC, HOME, HTF, PSH, PBV, VASH, SBS, and MHSA-funded communities. We pay above-average wages for officer retention, hire from transitional workforce pipelines, and train specifically for the populations you serve.",
     features: [
-      "Apartment complex coverage",
-      "HOA community patrols",
-      "Common area monitoring",
-      "Resident assistance",
-      "Lease enforcement support",
+      "LIHTC, HOME, HTF development experience",
+      "PSH, PBV, VASH, SBS, MHSA community expertise",
+      "Above-average wages for consistency",
+      "Transitional workforce hiring",
+      "Population-specific training",
     ],
+  },
+];
+
+const dispatchFeatures = [
+  {
+    icon: Phone,
+    title: "Live Call Answering",
+    description:
+      "Every call answered by a trained professional — no automated phone trees, no voicemail.",
+  },
+  {
+    icon: Radio,
+    title: "Centralized Command Hub",
+    description:
+      "Real-time DAR oversight and centralized coordination across all active sites.",
+  },
+  {
+    icon: Eye,
+    title: "Proactive Officer Monitoring",
+    description:
+      "Dispatch detects missed check-ins, irregular activity, and coverage gaps before they become problems.",
+  },
+  {
+    icon: Siren,
+    title: "Emergency Coordination",
+    description:
+      "Direct coordination with law enforcement, fire, and EMS when situations escalate.",
+  },
+];
+
+const reportingCards = [
+  {
+    title: "GuardPro Digital Platform",
+    description:
+      "Time-stamped activity logs with photo and video documentation for every shift and incident.",
+  },
+  {
+    title: "Secure Client Portal",
+    description:
+      "Online access to daily activity reports, incident history, and officer performance data.",
+  },
+  {
+    title: "Live GPS Tracking",
+    description:
+      "GPS-verified patrol routes and checkpoint confirmations for full accountability and transparency.",
+  },
+  {
+    title: "Proactive Monitoring",
+    description:
+      "Dispatch detects missed reports and irregular activity patterns, flagging issues before you need to ask.",
   },
 ];
 
@@ -64,8 +120,8 @@ const Services = () => {
               Security Services
             </h1>
             <p className="mt-4 text-lg text-primary-foreground/80">
-              Comprehensive security solutions tailored to commercial
-              properties, HOAs, and more.
+              Purpose-built security services for affordable housing, permanent
+              supportive housing, and voucher-based communities.
             </p>
           </div>
         </div>
@@ -117,8 +173,45 @@ const Services = () => {
         </div>
       </section>
 
-      {/* Reporting Section */}
+      {/* 24/7 Human Dispatch Center */}
       <section className="section-padding bg-muted/30">
+        <div className="container">
+          <div className="mx-auto max-w-2xl text-center">
+            <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-xl bg-primary/10">
+              <Headphones className="h-7 w-7 text-primary" />
+            </div>
+            <h2 className="text-2xl font-bold tracking-tight sm:text-3xl">
+              24/7 Human Dispatch Center
+            </h2>
+            <p className="mt-4 text-muted-foreground">
+              A live command hub staffed around the clock — not an answering
+              service
+            </p>
+          </div>
+
+          <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            {dispatchFeatures.map((feature) => (
+              <div
+                key={feature.title}
+                className="rounded-xl border border-border bg-card p-6 text-center"
+              >
+                <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10">
+                  <feature.icon className="h-6 w-6 text-primary" />
+                </div>
+                <h3 className="mt-4 font-semibold text-foreground">
+                  {feature.title}
+                </h3>
+                <p className="mt-2 text-sm text-muted-foreground">
+                  {feature.description}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Reporting Section */}
+      <section className="section-padding bg-background">
         <div className="container">
           <div className="mx-auto max-w-3xl">
             <div className="flex items-center justify-center gap-4 mb-8">
@@ -135,89 +228,67 @@ const Services = () => {
             </p>
 
             <div className="mt-10 grid gap-6 sm:grid-cols-2">
-              <div className="rounded-xl border border-border bg-card p-6">
-                <h3 className="font-semibold text-foreground">
-                  Daily Activity Reports (DAR)
-                </h3>
-                <p className="mt-2 text-sm text-muted-foreground">
-                  Detailed documentation of officer activities, observations,
-                  and any incidents during each shift. Available with
-                  time-stamped entries.
-                </p>
-              </div>
-              <div className="rounded-xl border border-border bg-card p-6">
-                <h3 className="font-semibold text-foreground">
-                  Geo-Location Capable
-                </h3>
-                <p className="mt-2 text-sm text-muted-foreground">
-                  GPS-verified patrol check-ins and incident reports available,
-                  providing accountability and transparency for your records.
-                </p>
-              </div>
-              <div className="rounded-xl border border-border bg-card p-6">
-                <h3 className="font-semibold text-foreground">
-                  Incident Documentation
-                </h3>
-                <p className="mt-2 text-sm text-muted-foreground">
-                  Thorough incident reports with photos when applicable,
-                  witness information, and follow-up recommendations.
-                </p>
-              </div>
-              <div className="rounded-xl border border-border bg-card p-6">
-                <h3 className="font-semibold text-foreground">
-                  Regular Communication
-                </h3>
-                <p className="mt-2 text-sm text-muted-foreground">
-                  Open lines of communication with designated contacts for
-                  real-time updates on significant events or concerns.
-                </p>
-              </div>
+              {reportingCards.map((card) => (
+                <div
+                  key={card.title}
+                  className="rounded-xl border border-border bg-card p-6"
+                >
+                  <h3 className="font-semibold text-foreground">
+                    {card.title}
+                  </h3>
+                  <p className="mt-2 text-sm text-muted-foreground">
+                    {card.description}
+                  </p>
+                </div>
+              ))}
             </div>
           </div>
         </div>
       </section>
 
       {/* Additional Info */}
-      <section className="section-padding bg-background">
+      <section className="section-padding bg-muted/30">
         <div className="container">
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            <div className="flex items-start gap-4 rounded-xl border border-border p-6">
+            <div className="flex items-start gap-4 rounded-xl border border-border bg-card p-6">
               <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-primary/10">
-                <Clock className="h-5 w-5 text-primary" />
+                <DollarSign className="h-5 w-5 text-primary" />
               </div>
               <div>
                 <h3 className="font-semibold text-foreground">
-                  Flexible Scheduling
+                  Flat-Rate Pricing
                 </h3>
                 <p className="mt-1 text-sm text-muted-foreground">
-                  Coverage available 24/7, weekends, holidays, or custom
-                  schedules to fit your needs.
+                  No holiday premiums, no overtime surcharges, no emergency fees.
+                  One predictable rate.
                 </p>
               </div>
             </div>
-            <div className="flex items-start gap-4 rounded-xl border border-border p-6">
+            <div className="flex items-start gap-4 rounded-xl border border-border bg-card p-6">
               <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-primary/10">
-                <MapPin className="h-5 w-5 text-primary" />
-              </div>
-              <div>
-                <h3 className="font-semibold text-foreground">Local Focus</h3>
-                <p className="mt-1 text-sm text-muted-foreground">
-                  Based in San Diego, we know the local communities and respond
-                  quickly to client needs.
-                </p>
-              </div>
-            </div>
-            <div className="flex items-start gap-4 rounded-xl border border-border p-6 sm:col-span-2 lg:col-span-1">
-              <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-primary/10">
-                <UserCheck className="h-5 w-5 text-primary" />
+                <CalendarCheck className="h-5 w-5 text-primary" />
               </div>
               <div>
                 <h3 className="font-semibold text-foreground">
-                  Trained Personnel
+                  Monthly Supervisor Meetings
                 </h3>
                 <p className="mt-1 text-sm text-muted-foreground">
-                  All officers receive training in de-escalation, customer
-                  service, and emergency response.
+                  Performance review, site concerns, improvement plans, and
+                  shared goals — every month.
+                </p>
+              </div>
+            </div>
+            <div className="flex items-start gap-4 rounded-xl border border-border bg-card p-6 sm:col-span-2 lg:col-span-1">
+              <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-primary/10">
+                <GraduationCap className="h-5 w-5 text-primary" />
+              </div>
+              <div>
+                <h3 className="font-semibold text-foreground">
+                  Structured Onboarding
+                </h3>
+                <p className="mt-1 text-sm text-muted-foreground">
+                  Site-specific training completed before first assignment —
+                  house rules, privacy protocols, and community expectations.
                 </p>
               </div>
             </div>

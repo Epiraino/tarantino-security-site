@@ -12,11 +12,12 @@ const FinalCTA = () => {
       <div className="container relative py-16 md:py-24">
         <div className="mx-auto max-w-2xl text-center">
           <h2 className="text-2xl font-bold tracking-tight text-amber-200 sm:text-3xl md:text-4xl">
-            Ready to Secure Your Property?
+            Ready to Partner With a Security Team That Gets It?
           </h2>
           <p className="mx-auto mt-4 max-w-lg text-primary-foreground/80">
-            Call us today for a quote or to schedule a coverage assessment. We
-            respond promptly and work with your timeline.
+            Schedule an in-person consultation. We'll assess your property,
+            learn your mission, and build a security plan that supports your
+            residents and staff.
           </p>
 
           <div className="mt-8">
@@ -34,7 +35,7 @@ const FinalCTA = () => {
           </div>
 
           <p className="mt-6 text-sm text-primary-foreground/60">
-            Available for immediate consultation
+            Upper management available 24/7 by phone — no call trees, no delays
           </p>
         </div>
       </div>

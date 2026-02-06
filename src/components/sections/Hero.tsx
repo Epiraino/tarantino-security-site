@@ -17,12 +17,13 @@ const Hero = () => {
             Tarantino Security
           </h1>
           <p className="mt-4 animate-fade-in text-xl font-medium text-primary-foreground/90 sm:text-2xl md:text-3xl">
-            Professional Security Services in San Diego
+            Security for Affordable & Supportive Housing Communities
           </p>
           <p className="mx-auto mt-6 max-w-2xl animate-slide-up text-lg text-primary-foreground/70 md:text-xl">
-            Reliable coverage, professional presence, and expert de-escalation.
-            Trusted by property managers, HOAs, and commercial clients
-            throughout the region.
+            Presence. Consistency. Empathy. Accountability. A
+            California-licensed Private Patrol Operator built to serve
+            affordable housing, permanent supportive housing, and voucher-based
+            communities across San Diego.
           </p>
           <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
             <Button

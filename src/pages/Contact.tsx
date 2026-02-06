@@ -80,7 +80,7 @@ const Contact = () => {
               Contact Us
             </h1>
             <p className="mt-4 text-lg text-primary-foreground/80">
-              Get in touch for a quote or to discuss your security needs
+              Get in touch to discuss your community's security needs
             </p>
           </div>
         </div>
@@ -97,8 +97,8 @@ const Contact = () => {
                   Call Us Directly
                 </h2>
                 <p className="mt-2 text-muted-foreground">
-                  The fastest way to reach us. We're ready to discuss your
-                  security requirements.
+                  Upper management available 24/7 by phone and email. No call
+                  trees, no delays.
                 </p>
 
                 <div className="mt-8">
@@ -135,7 +135,7 @@ const Contact = () => {
                         Response Time
                       </h3>
                       <p className="mt-1 text-sm text-muted-foreground">
-                        We respond to inquiries as soon as possible
+                        24/7 availability. Every call answered by a live professional.
                       </p>
                     </div>
                   </div>
@@ -286,11 +286,11 @@ const Contact = () => {
         <div className="container">
           <div className="mx-auto max-w-3xl text-center">
             <h2 className="text-xl font-bold tracking-tight">
-              Serving San Diego & Surrounding Areas
+              Serving San Diego County
             </h2>
             <p className="mt-2 text-muted-foreground">
-              Based in San Diego, we provide security services throughout the
-              county and neighboring communities.
+              Serving affordable, supportive, and mixed-use housing communities
+              across San Diego County.
             </p>
             <div
               className="mt-8 aspect-video rounded-xl bg-primary/5 border border-border"

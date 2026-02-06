@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
 import {
   UserCheck,
-  KeyRound,
-  Building2,
+  Headphones,
+  Monitor,
   ArrowRight,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -11,21 +11,21 @@ import { useInView } from "@/hooks/use-in-view";
 const services = [
   {
     icon: UserCheck,
-    title: "On-Site Security",
+    title: "On-Site Security Officers",
     description:
-      "Trained security personnel stationed at your property to maintain safety and deter incidents.",
+      "Officers matched to your site by resident demographics, behavioral-health sensitivity, and community needs — not just availability.",
   },
   {
-    icon: KeyRound,
-    title: "Access Control",
+    icon: Headphones,
+    title: "24/7 Live Dispatch Center",
     description:
-      "Manage entry points, verify credentials, and maintain secure access to your facilities.",
+      "Every call answered instantly by a trained professional. Real-time DAR oversight, proactive officer monitoring, and emergency coordination.",
   },
   {
-    icon: Building2,
-    title: "Property Security",
+    icon: Monitor,
+    title: "Digital Reporting & Client Portal",
     description:
-      "Specialized coverage for apartment complexes, HOA communities, and residential properties.",
+      "GuardPro platform with time-stamped activity logs, photo and video documentation, incident tracking, and secure online access.",
   },
 ];
 
@@ -40,7 +40,7 @@ const ServicesPreview = () => {
             Our Services
           </h2>
           <p className="mt-4 text-muted-foreground">
-            Comprehensive security solutions tailored to your specific needs
+            Purpose-built security for affordable and supportive housing communities
           </p>
         </div>
 

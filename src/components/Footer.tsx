@@ -14,8 +14,9 @@ const Footer = () => {
           <div className="lg:col-span-2">
             <Logo />
             <p className="mt-4 max-w-md text-sm text-muted-foreground">
-              Professional security services for commercial properties, HOAs,
-              and events throughout San Diego and surrounding areas.
+              California-licensed Private Patrol Operator specializing in
+              affordable housing, permanent supportive housing, and
+              voucher-based communities across San Diego.
             </p>
           </div>
 
@@ -84,8 +85,8 @@ const Footer = () => {
               &copy; {currentYear} {COMPANY.name}. All rights reserved.
             </p>
             <p className="text-xs text-muted-foreground">
-              Services subject to availability. Licensing and insurance details
-              available upon request.
+              California Licensed Private Patrol Operator. Fully insured.
+              License details available upon request.
             </p>
           </div>
         </div>
